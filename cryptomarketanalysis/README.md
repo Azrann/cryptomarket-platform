@@ -4,6 +4,33 @@ Suite .NET de recopilación de datos de criptomonedas e ICOs: seguimiento de Twi
 
 Documentación basada en los archivos locales revisados el 21 de octubre de 2026.
 
+<!-- BEGIN project-context -->
+
+## Antigüedad y evidencia
+
+**Año de referencia de esta versión: 2018.** Se toma el archivo de código o configuración más reciente con una fecha histórica recuperable; no se ha podido confirmar la fecha exacta de creación.
+
+- Archivo más reciente datable: **2018-06-06**, [`cryptomarketanalysis/src/IcoHolderScrapper/Program.cs`](src/IcoHolderScrapper/Program.cs); fecha de modificación conservada.
+- Primer registro del repositorio Git original que contiene este código: **2018-02-24**. Puede corresponder a una importación; no prueba cuándo se escribió por primera vez.
+- Dependencia fechada más reciente entre las comprobadas: [Newtonsoft.Json 11.0.2](https://www.nuget.org/packages/Newtonsoft.Json/11.0.2), publicada el **2018-03-24** (versión declarada), en [`cryptomarketanalysis/src/CryptoMarketAnalysis.DataAccess/packages.config`](src/CryptoMarketAnalysis.DataAccess/packages.config).
+- Referencia adicional: destino `v4.6.1` en [`cryptomarketanalysis/src/CryptoMarketAnalysis/CryptoMarketAnalysis.csproj`](src/CryptoMarketAnalysis/CryptoMarketAnalysis.csproj); su [versión estable se publicó el 2015-11-30](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-framework). Es una pista de generación tecnológica; pudieron existir versiones preliminares anteriores.
+
+La publicación de una dependencia sitúa la configuración conservada a partir de esa versión, si la referencia es válida. Una actualización de paquetes puede ser mucho más reciente que el inicio del proyecto. No se restauraron paquetes para comprobarlo.
+
+Se descartaron las marcas de tiempo de la copia de octubre de 2026 y los documentos generados durante esta revisión. Las fechas recuperables no garantizan que no existan cambios posteriores sin datar.
+
+## Por qué merece la pena mirarlo
+
+Los lectores de redes y las tareas periódicas convierten información dispersa sobre monedas e ICO en datos persistidos. La parte interesante es el recorrido extracción → normalización → almacenamiento, especialmente la coordinación de lectores mediante CronNET.
+
+Puntos de entrada al código:
+
+- [`src/IcoReaderService`](src/IcoReaderService/)
+- [`src/IcoHolderScrapper/Program.cs`](src/IcoHolderScrapper/Program.cs)
+- [`src/CryptoMarketAnalysis/TwitterService.cs`](src/CryptoMarketAnalysis/TwitterService.cs)
+
+<!-- END project-context -->
+
 ## Estructura y responsabilidades
 
 | Ruta | Responsabilidad |

@@ -4,6 +4,19 @@ Carpeta vacía en la copia completa recibida; no contiene código, manifiestos n
 
 Documentación basada en los archivos locales revisados el 21 de octubre de 2026.
 
+<!-- BEGIN project-context -->
+
+## Antigüedad y evidencia
+
+**Año de creación: sin determinar.** No se conserva código con una fecha histórica verificable.
+
+
+## Por qué merece la pena mirarlo
+
+Esta carpeta no conserva implementación. Su utilidad es dejar constancia de una interfaz prevista dentro de CryptoMarket; no hay un aspecto técnico verificable que destacar.
+
+<!-- END project-context -->
+
 ## Tecnologías y requisitos
 
 No es posible determinar tecnologías o requisitos sin archivos.
