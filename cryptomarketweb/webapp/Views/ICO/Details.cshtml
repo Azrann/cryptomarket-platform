@@ -1,0 +1,259 @@
+@using CryptoMarketWeb.DataAccess.Entities
+@using CryptoMarketWeb.Services
+
+@{
+    var icoDetails = (IcoProjectDetails) ViewBag.IcoDetails;
+    var ico = (IcoProject) ViewBag.Ico;
+}
+<div id="content">
+
+<!-- row -->
+<div class="row">
+
+    <!-- col -->
+    <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+        <div class="page-title txt-color-blueDark">
+            <!-- PAGE HEADER -->
+            <span><i class="fa-fw fa fa-file-text-o"></i> ICO > @icoDetails.ProjName</span>
+        </div>
+    </div>
+
+    <!-- end col -->
+
+</div>
+<!-- end row -->
+
+<div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-8">
+        <div class="jumbotron well padding-10">
+            <h1>
+                <img src="~/content/img/ico/@ico.ProjImgFileName" width="64" height="64"/> @icoDetails.ProjName
+            </h1>
+            <div class="text-center bg-color-darken">
+                <iframe width="560" height="349" src="@icoDetails.VideoDescriptionUrl" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p class="margin-top-10">
+                @icoDetails.Description
+            </p>
+        </div>
+        @if (!string.IsNullOrEmpty(@icoDetails.About))
+        {
+            <div class="well">
+                <h2 class="padding-bottom-10">Details</h2>
+                <span class="">@Html.Raw(@icoDetails.About)</span>
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(@icoDetails.Features))
+        {
+            <div class="well">
+                <h2 class="padding-bottom-10">Features</h2>
+                <span class="">@Html.Raw(@icoDetails.Features)</span>
+            </div>
+        }
+        @if (@icoDetails.Team.Any())
+        {
+            <div class="well">
+                <h2 class="padding-bottom-10 ">Team</h2>
+                <div class="row">
+                    @foreach (var teamMember in @icoDetails.Team)
+                    {
+                        <div class="col-sm-4 col-md-3 col-lg-2 text-center team-member">
+                            <img src="~/content/img/ico/@teamMember.Value.PictureFileName" width="90" height="90" class="linkedin-img">
+                            <div>
+                                @if (@teamMember.Value.LinkedInUrl != null)
+                                {
+                                    <a href="@teamMember.Value.LinkedInUrl">
+                                        <span>@teamMember.Value.Name</span> <i class="fa-fw fa @RenderHelper.GetCssNameFromUrl(@teamMember.Value.LinkedInUrl)"></i>
+                                    </a>
+                                }
+                            </div>
+                            <div>
+                                <span>@Html.Raw(@teamMember.Value.Position)</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+        @if (@icoDetails.Advisors.Any())
+        {
+            <div class="well">
+                <h2 class="padding-bottom-10 ">Advisors</h2>
+                <div class="row">
+                    @foreach (var teamMember in @icoDetails.Advisors)
+                    {
+                        <div class="col-sm-4 col-md-3 col-lg-2 text-center team-member">
+                            <img src="~/content/img/ico/@teamMember.Value.PictureFileName" width="90" height="90" class="linkedin-img">
+                            <div>                                
+                                @if (@teamMember.Value.LinkedInUrl != null)
+                                {
+                                    <a href="@teamMember.Value.LinkedInUrl">
+                                        <span>@teamMember.Value.Name</span> <i class="fa-fw fa @RenderHelper.GetCssNameFromUrl(@teamMember.Value.LinkedInUrl)"></i>
+                                    </a>
+                                }
+                            </div>
+                            <div>
+                                <span>@Html.Raw(@teamMember.Value.Position)</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="col-sm-12 col-md-4 col-lg-4">
+        <div class="well padding-10">
+            <h2>Ratings</h2>
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="well text-center connect">
+                        <img src="~/content/img/ico/icoholder.svg" alt="img" class="margin-bottom-5 margin-top-5" height="49" width="100">
+                        <span class="font-xl">
+                            <b>@(ico.IcoHolderRating == 0.0m ? @Html.Raw("N/A") : @Html.Raw(@ico.IcoHolderRating))</b>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="well text-center connect">
+                        <img src="~/content/img/ico/icobazar.jpg" alt="img" class="margin-bottom-5 margin-top-5" height="49" width="100">
+                        <span class="font-xl">
+                            <b>@(ico.IcoBazarRating == 0.0m ? @Html.Raw("N/A") : @Html.Raw(@ico.IcoBazarRating))</b>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="well text-center connect">
+                        <img src="~/content/img/ico/icobench.svg" alt="img" class="margin-bottom-5 margin-top-5">
+                        <span class="font-xl">
+                            <b>@(ico.IcoBenchRating == 0.0m ? @Html.Raw("N/A") : @Html.Raw(@ico.IcoBenchRating))</b>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="well padding-10">
+            <h2 class="padding-bottom-10">Data</h2>
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-6 text-center">
+                    <h3 class="margin-bottom-0">
+                        @{
+                            @Html.Raw(@ico.EventStartDate.HasValue ? @ico.EventStartDate.Value.ToShortDateString() : "No data")
+                            ;
+                        }
+                        <br>
+                        <small class="font-xs">
+                            <sup>Start Date</sup>
+                        </small>
+                    </h3>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6 text-center">
+                    <h3 class="margin-bottom-0">
+                        @{
+                            @Html.Raw(@ico.EventEndDate.HasValue ? @ico.EventEndDate.Value.ToShortDateString() : "No data")
+                            ;
+                        }
+                        <br>
+                        <small class="font-xs">
+                            <sup>End Date</sup>
+                        </small>
+                    </h3>
+                </div>
+            </div>
+            <div class="bar-holder">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-@(@ico.Percent > 70 ? @Html.Raw("success") : @Html.Raw("primary"))" role="progressbar" style="width: @Math.Floor(@ico.Percent)%">@Math.Floor(@ico.Percent)%</div>
+                </div>
+            </div>
+        </div>
+        @if (@icoDetails.Links.Any())
+        {
+            <div class="well padding-10">
+                <h2 class="padding-bottom-10">Links</h2>
+                <ul class="list-inline text-center">
+                    @foreach (var link in @icoDetails.Links)
+                    {
+                        <li>
+                            <a href="@link.Value" rel="nofollow" target="_blank" rel="tooltip" data-placement="top" data-original-title="@link.Key" title="@link.Key">
+                                <i class="fa fa-2x @RenderHelper.GetCssNameFromType(@link.Key)"></i>
+                            </a>
+                        </li>
+                     }
+                </ul>
+            </div>
+        }
+        @if (@icoDetails.Roadmap.Any())
+        {
+            <div class="well padding-10">
+                <h2 class="padding-bottom-10">RoadMap</h2>
+                <div class="smart-timeline">
+                    <ul class="smart-timeline-list">
+                        @foreach (var roadmapItem in @icoDetails.Roadmap)
+                        {
+                            <li>
+                                <div class="smart-timeline-icon">
+                                    <i class="fa fa-pencil"></i>
+                                </div>
+                                <div class="smart-timeline-time">
+                                    <small>@roadmapItem.Key</small>
+                                </div>
+                                <div class="smart-timeline-content">
+                                    <p>
+                                        @roadmapItem.Value
+                                    </p>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+</div>
+
+@section pagespecific {
+    <script>
+        $(document).ready(function() {
+            // Find all YouTube videos
+            var $allVideos = $("iframe[src^='https://www.youtube.com']"),
+
+                // The element that is fluid width
+                $fluidEl = $("body");
+
+// Figure out and save aspect ratio for each video
+            $allVideos.each(function() {
+
+                $(this)
+                    .data('aspectRatio', this.height / this.width)
+
+                    // and remove the hard coded width/height
+                    .removeAttr('height')
+                    .removeAttr('width');
+
+            });
+
+// When the window is resized
+            $(window).resize(function() {
+
+                var newWidth = $fluidEl.width();
+
+                // Resize all videos according to their own aspect ratio
+                $allVideos.each(function() {
+                    var $el = $(this);
+                    var newWidth = $el.parent().width();
+                    $el
+                        .width(newWidth)
+                        .height(newWidth * $el.data('aspectRatio'));
+
+                });
+
+// Kick off one resize to fix all videos on page load
+            }).resize();
+        });
+
+    </script>
+}

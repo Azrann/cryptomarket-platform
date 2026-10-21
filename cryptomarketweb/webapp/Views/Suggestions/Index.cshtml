@@ -1,0 +1,162 @@
+
+@{
+    ViewBag.Title = "View";
+}
+<div id="content">
+    <div class="row">
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+            <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-inbox"></i> Suggestions </h1>
+        </div>
+    </div>
+    <!-- widget grid -->
+    <section id="widget-grid" class="">
+
+        <!-- row -->
+        <div class="row">
+            <article class="col-sm-2"></article>
+            <article class="col-sm-8">
+                <!-- Widget ID (each widget will need unique ID)-->
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox">
+                </div>
+                <!-- end widget edit box -->
+                <!-- widget content -->
+                <div class="widget-body no-padding">
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget" id="wid-id-7" data-widget-editbutton="false" data-widget-custombutton="false">
+                        <!-- widget options:
+                            usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                            data-widget-colorbutton="false"
+                            data-widget-editbutton="false"
+                            data-widget-togglebutton="false"
+                            data-widget-deletebutton="false"
+                            data-widget-fullscreenbutton="false"
+                            data-widget-custombutton="false"
+                            data-widget-collapsed="true"
+                            data-widget-sortable="false"
+
+                        -->
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                            <h2>Review form </h2>
+
+                        </header>
+
+                        <!-- widget div-->
+                        <div>
+                            <div class="alert alert-info fade in">
+                                <button class="close" data-dismiss="alert">
+                                    ×
+                                </button>
+                                <i class="fa-fw fa fa-info"></i>
+                                <strong>Info!</strong> We are in early alpha, so we really really love your feedback, what features would you like to see? what should we improve? what you hate? tell us anything :)
+                            </div>
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+                            <!-- widget content -->
+                            <div class="widget-body no-padding">
+
+                                <form id="review-form" class="smart-form" action="@Url.Action("Add","Suggestions")">
+                                    <header>
+                                        Leave your comments
+                                    </header>
+
+                                    <fieldset>
+                                        <section>
+                                            <label class="input">
+                                                <i class="icon-append fa fa-user"></i>
+                                                <input type="text" name="name" id="name" placeholder="Your name">
+                                            </label>
+                                        </section>
+
+                                        <section>
+                                            <label class="input">
+                                                <i class="icon-append fa fa-envelope-o"></i>
+                                                <input type="email" name="email" id="email" placeholder="Your e-mail">
+                                            </label>
+                                        </section>
+
+                                        <section>
+                                            <label class="label"></label>
+                                            <label class="textarea">
+                                                <i class="icon-append fa fa-comment"></i>
+                                                <textarea rows="3" name="text" id="text" placeholder="Your feedback here"></textarea>
+                                            </label>
+                                        </section>
+                                    </fieldset>
+                                    <footer>
+                                        <button type="submit" class="btn btn-primary">
+                                            Send
+                                        </button>
+                                    </footer>
+                                </form>
+
+                            </div>
+                            <!-- end widget content -->
+                            @if (TempData["SuggestionSent"] != null)
+                            {
+                                <div class="alert alert-success fade in">
+                                    <button class="close" data-dismiss="alert">
+                                        ×
+                                    </button>
+                                    <i class="fa-fw fa fa-thumbs-up"></i>
+                                    <strong>Thanks for submitting your feedback</strong>.
+                                </div>
+                            }
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+                    <!-- end widget -->
+                </div>
+            </article>
+        </div>
+    </section>
+</div>
+
+
+@section pagespecific {
+    <script type="text/javascript">
+
+        // DO NOT REMOVE : GLOBAL FUNCTIONS!
+
+        $(document).ready(function () {
+
+            var $reviewForm = $("#review-form").validate({
+                // Rules for form validation
+                rules: {
+                    name: {
+                        required: false
+                    },
+                    email: {
+                        required: false,
+                        email: true
+                    },
+                    review: {
+                        required: true,
+                        minlength: 10
+                    }
+                },
+
+                // Messages for form validation
+                messages: {
+                    review: {
+                        required: 'Please leave your comment'
+                    }
+                },
+
+                // Do not change code below
+                errorPlacement: function (error, element) {
+                    error.insertAfter(element.parent());
+                }
+            });
+
+        })
+
+    </script>
+}

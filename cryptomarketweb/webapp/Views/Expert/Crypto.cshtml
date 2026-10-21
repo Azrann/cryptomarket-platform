@@ -1,0 +1,127 @@
+@using CryptoMarketWeb.DataAccess.Entities
+@using SimpleFeedReader
+@{
+    var Experts = (List<Expert>) ViewBag.Experts;
+}
+<div id="content">
+
+    <!-- row -->
+    <div class="row">
+
+        <!-- col -->
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+            <h1 class="page-title txt-color-blueDark">
+                <!-- PAGE HEADER -->
+                <i class="fa-fw fa fa-home"></i> The Experts
+                <span>
+                    >
+                    ICO
+                </span>
+            </h1>
+        </div>
+        <!-- end col -->
+
+    </div>
+    <!-- end row -->
+    <div class="row">
+        <div class="col-sm-12">
+
+            <div class="well">
+                <button class="close" data-dismiss="alert">
+                    ×
+                </button>
+                <h1>
+                    <span class="semi-bold">Are you a Crypto Expert and want to be Listed here for FREE? </span><br>
+                    <small class="text-danger slideInRight fast animated">
+                        <strong>Sign up <a href="@Url.Action("Register", "Account")">HERE</a> for a free listing.</strong>
+                    </small>
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        @foreach (var expert in Experts)
+        {
+            <div class="col-sm-12 col-lg-6">
+                <div class="well padding-10 min-height">
+                    <div class="air air-bottom-left padding-10">
+                        <i class="fa fa-calendar"></i><small> Updated: @expert.LastUpdated.ToShortDateString()</small>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2 col-lg-3">
+                            <img src="@expert.ImageUrl?s=120" alt="avatar @expert.Name" width="120" height="120">
+                        </div>
+                        <div class="col-sm-4 col-lg-4">
+                            <h1>
+                                @expert.Name
+                                <br>
+                                <small>Crypto Expert</small>
+                            </h1>
+                            @if (!string.IsNullOrEmpty(expert.Website))
+                            {
+                                <i class="fa fa-link"></i>
+                                <a href="@expert.Website" target="_blank">@expert.Website</a>
+                            }
+                            <h4>Follow me on: </h4>
+                            @if (!string.IsNullOrEmpty(expert.FacebookUrl))
+                            {
+                                <a title="Facebook" href="@expert.FacebookUrl" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x"></i>
+                                    </span>
+                                </a>
+                            }
+                            @if (!string.IsNullOrEmpty(expert.TwitterUrl))
+                            {
+                                <a title="Twitter" href="@expert.TwitterUrl" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-twitter fa-stack-1x"></i>
+                                    </span>
+                                </a>
+                            }
+                            @if (!string.IsNullOrEmpty(expert.YoutubeUrl))
+                            {
+                                <a title="Youtube" href="@expert.YoutubeUrl" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-youtube fa-stack-1x"></i>
+                                    </span>
+                                </a>
+                            }
+                            @if (!string.IsNullOrEmpty(expert.InstagramUrl))
+                            {
+                                <a title="Instagram" href="@expert.InstagramUrl" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-instagram fa-stack-1x"></i>
+                                    </span>
+                                </a>
+                            }
+                            @if (!string.IsNullOrEmpty(expert.OtherUrl))
+                            {
+                                <a title="Others" href="@expert.OtherUrl" target="_blank">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-question fa-stack-1x"></i>
+                                    </span>
+                                </a>
+                            }
+
+                        </div>
+                        <div class="col-sm-6 padding-top-15 col-lg-5">
+                            <p class="font-md">
+                                <i>A little about me...</i>
+                            </p>
+                            <p>
+                                @if (!string.IsNullOrEmpty(expert.Bio))
+                                {
+                                    @expert.Bio
+                                }
+                            </p>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
