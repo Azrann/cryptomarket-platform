@@ -1,41 +1,43 @@
+**Languages:** [English](Readme.md) · [Español](README.es.md)
+
 # cryptomarketanalysis.webui2
 
-Carpeta vacía en la copia completa recibida; no contiene código, manifiestos ni configuración de aplicación.
+An empty folder in the complete copy received; it contains no source code, manifests, or application configuration.
 
-Documentación basada en los archivos locales revisados el 21 de octubre de 2026.
+Documentation based on local files reviewed on 21 October 2026.
 
 <!-- BEGIN project-context -->
 
-## Antigüedad y evidencia
+## Historical dates and evidence
 
-**Año de creación: sin determinar.** No se conserva código con una fecha histórica verificable.
+**Creation year: undetermined.** No code with a verifiable historical date is preserved.
 
 
-## Por qué merece la pena mirarlo
+## Why this is worth exploring
 
-Esta carpeta no conserva implementación. Su utilidad es dejar constancia de una interfaz prevista dentro de CryptoMarket; no hay un aspecto técnico verificable que destacar.
+This folder contains no implementation. It records a planned CryptoMarket interface, but there is no verifiable technical feature to highlight.
 
 <!-- END project-context -->
 
-## Tecnologías y requisitos
+## Technologies and requirements
 
-No es posible determinar tecnologías o requisitos sin archivos.
+Technologies and requirements cannot be determined without files.
 
-## Preparación y arranque
+## Setup and startup
 
-No hay aplicación que compilar o iniciar. Recuperar los archivos si se quiere conservar una implementación de esta interfaz.
+There is no application to build or start. Recover the files if an implementation of this interface is to be preserved.
 
-## Configuración e integraciones
+## Configuration and integrations
 
-No hay configuración visible que revisar.
+There is no visible configuration to review.
 
-## Estado de esta copia
+## Status of this copy
 
-Su nombre sugiere relación con el conjunto CryptoMarket, pero no se puede atribuir una implementación o dependencia concreta a una carpeta vacía.
+Its name suggests a connection to CryptoMarket, but no specific implementation or dependency can be attributed to an empty folder.
 
-La revisión fue estática: no se restauraron dependencias, no se compiló ni se ejecutaron aplicaciones o pruebas. Los comandos anteriores son instrucciones de preparación, no resultados de validación. Las versiones indicadas son las del código conservado.
+The review was static: dependencies were not restored, and applications and tests were neither built nor run. The commands above are setup instructions, not validation results. Listed versions describe the preserved code.
 
 
-## Copia pública
+## Public copy
 
-Las credenciales originales se han retirado o sustituido por `REPLACE_WITH_YOUR_VALUE`. Los datos locales, sesiones, certificados privados y perfiles de despliegue se omiten. Configurar servicios y credenciales propios antes de ejecutar. La compilación y el funcionamiento con servicios externos no se han validado.
+Original credentials have been removed or replaced with `REPLACE_WITH_YOUR_VALUE`. Local data, sessions, private certificates, and deployment profiles are omitted. Configure your own services and credentials before running. Building and operation with external services have not been validated.

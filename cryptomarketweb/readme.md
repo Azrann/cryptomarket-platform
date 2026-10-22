@@ -1,29 +1,31 @@
+**Languages:** [English](readme.md) · [Español](README.es.md)
+
 # cryptomarketweb
 
-Portal ASP.NET MVC de criptomonedas e ICOs con noticias, fichas, expertos, tendencias, sugerencias e informes basados en datos sociales.
+ASP.NET MVC cryptocurrency and ICO portal with news, profiles, experts, trends, suggestions, and reports based on social data.
 
-Documentación basada en los archivos locales revisados el 21 de octubre de 2026.
+Documentation based on local files reviewed on 21 October 2026.
 
 <!-- BEGIN project-context -->
 
-## Antigüedad y evidencia
+## Historical dates and evidence
 
-**Año de referencia de esta versión: 2019.** Se toma el archivo de código o configuración más reciente con una fecha histórica recuperable; no se ha podido confirmar la fecha exacta de creación.
+**Reference year for this version: 2019.** This uses the most recent source or configuration file with a recoverable historical date; the exact creation date could not be confirmed.
 
-- Archivo más reciente datable: **2019-07-14**, [`cryptomarketweb/webapp/Views/Market/Last24hours.cshtml`](webapp/Views/Market/Last24hours.cshtml); fecha del commit que modificó el archivo, recuperada del Git local.
-- Primer registro del repositorio Git original que contiene este código: **2018-03-09**. Puede corresponder a una importación; no prueba cuándo se escribió por primera vez.
-- Dependencia fechada más reciente entre las comprobadas: [NUnit 3.10.1](https://www.nuget.org/packages/NUnit/3.10.1), publicada el **2018-03-13** (versión declarada), en [`cryptomarketweb/CryptoMarketWeb.Test/packages.config`](CryptoMarketWeb.Test/packages.config).
-- Referencia adicional: destino `v4.6.1` en [`cryptomarketweb/CryptoMarketWeb.Test/CryptoMarketWeb.Test.csproj`](CryptoMarketWeb.Test/CryptoMarketWeb.Test.csproj); su [versión estable se publicó el 2015-11-30](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-framework). Es una pista de generación tecnológica; pudieron existir versiones preliminares anteriores.
+- Most recent datable file: **2019-07-14**, [`cryptomarketweb/webapp/Views/Market/Last24hours.cshtml`](webapp/Views/Market/Last24hours.cshtml); date of the commit modifying the file, recovered from local Git history.
+- First record in the original Git repository containing this code: **2018-03-09**. This may be an import and does not establish when the code was first written.
+- Most recently published dependency among those checked: [NUnit 3.10.1](https://www.nuget.org/packages/NUnit/3.10.1), published on **2018-03-13** (declared version), in [`cryptomarketweb/CryptoMarketWeb.Test/packages.config`](CryptoMarketWeb.Test/packages.config).
+- Additional reference: target `v4.6.1` in [`cryptomarketweb/CryptoMarketWeb.Test/CryptoMarketWeb.Test.csproj`](CryptoMarketWeb.Test/CryptoMarketWeb.Test.csproj); its [stable release was published on 2015-11-30](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-framework). This indicates the technology generation; earlier preview releases may have existed.
 
-La publicación de una dependencia sitúa la configuración conservada a partir de esa versión, si la referencia es válida. Una actualización de paquetes puede ser mucho más reciente que el inicio del proyecto. No se restauraron paquetes para comprobarlo.
+A dependency's publication places the preserved configuration at or after that version, if the reference is valid. Package updates may be much newer than the project's beginnings. Packages were not restored to verify this.
 
-Se descartaron las marcas de tiempo de la copia de octubre de 2026 y los documentos generados durante esta revisión. Las fechas recuperables no garantizan que no existan cambios posteriores sin datar.
+October 2026 copy timestamps and documents generated during this review were excluded. Recoverable dates do not guarantee that there are no later, undated changes.
 
-## Por qué merece la pena mirarlo
+## Why this is worth exploring
 
-El portal conecta datos de mercado con fichas de ICO y actividad social. Es interesante seguir cómo los modelos y servicios de ingesta terminan convertidos en páginas de exploración y vistas como las de las últimas 24 horas.
+The portal connects market data to ICO profiles and social activity. Follow how ingestion models and services become exploration pages and views such as those covering the last 24 hours.
 
-Puntos de entrada al código:
+Code entry points:
 
 - [`webapp/Controllers/IcoController.cs`](webapp/Controllers/IcoController.cs)
 - [`webapp/Views/Market/Last24hours.cshtml`](webapp/Views/Market/Last24hours.cshtml)
@@ -31,38 +33,38 @@ Puntos de entrada al código:
 
 <!-- END project-context -->
 
-## Estructura y responsabilidades
+## Structure and responsibilities
 
-| Ruta | Responsabilidad |
+| Path | Responsibility |
 | --- | --- |
-| `webapp/` | Aplicación MVC principal y acceso a datos con Entity Framework/Dapper. |
-| `webapp/Controllers/` | Mercado, tendencias, informes, criptomonedas, expertos, ICOs, cuentas y sugerencias. |
-| `SimpleFeedReader/` | Lectura de noticias de CoinTelegraph. |
-| `CryptoMarketWeb.Test/` | Pruebas NUnit de lectores y servicios de datos. |
+| `webapp/` | Main MVC application and Entity Framework/Dapper data access. |
+| `webapp/Controllers/` | Markets, trends, reports, cryptocurrencies, experts, ICOs, accounts, and suggestions. |
+| `SimpleFeedReader/` | Reads news from CoinTelegraph. |
+| `CryptoMarketWeb.Test/` | NUnit tests for readers and data services. |
 
-## Tecnologías y requisitos
+## Technologies and requirements
 
-Windows y Visual Studio/MSBuild. Destinos .NET Framework 4.6.1, 4.5.2 y 4.0; ASP.NET MVC 5 y SQL Server. Se usan Castle Windsor, AutoMapper y un cliente de datos ICO.
+Windows and Visual Studio/MSBuild. Targets .NET Framework 4.6.1, 4.5.2, and 4.0; ASP.NET MVC 5 and SQL Server. Uses Castle Windsor, AutoMapper, and an ICO data client.
 
-Destinos leídos de los proyectos: `v4.0`, `v4.5.2`, `v4.6.1`.
+Targets read from project files: `v4.0`, `v4.5.2`, `v4.6.1`.
 
-## Preparación y arranque
+## Setup and startup
 
-Abrir CryptoMarketWeb.sln, restaurar NuGet y seleccionar webapp para IIS Express. Preparar bases locales antes de probar informes o autenticación.
+Open CryptoMarketWeb.sln, restore NuGet packages, and select webapp for IIS Express. Prepare local databases before testing reports or authentication.
 
-Soluciones presentes: `CryptoMarketWeb.sln`.
+Solutions present: `CryptoMarketWeb.sln`.
 
-## Configuración e integraciones
+## Configuration and integrations
 
-Web.config y la configuración de pruebas declaran DefaultConnection, CryptoMarketDB, CurrencyContextDB, ExpertContextDB, IcoSocialDB e IcoDB. También hay un hash de contraseña literal en UserManager y datos privados en un perfil de publicación.
+Web.config and test configuration declare DefaultConnection, CryptoMarketDB, CurrencyContextDB, ExpertContextDB, IcoSocialDB, and IcoDB. UserManager also contains a literal password hash, and a publish profile contains private data.
 
-## Estado de esta copia
+## Status of this copy
 
-cryptomarketanalysis realiza otro trabajo relacionado con datos sociales; los archivos revisados no demuestran un despliegue conjunto completo. Se conservó el README anterior.
+cryptomarketanalysis performs related social data processing; the reviewed files do not demonstrate a complete joint deployment. The previous README is retained.
 
-La revisión fue estática: no se restauraron dependencias, no se compiló ni se ejecutaron aplicaciones o pruebas. Los comandos anteriores son instrucciones de preparación, no resultados de validación. Las versiones indicadas son las del código conservado.
+The review was static: dependencies were not restored, and applications and tests were neither built nor run. The commands above are setup instructions, not validation results. Listed versions describe the preserved code.
 
 
-## Copia pública
+## Public copy
 
-Las credenciales originales se han retirado o sustituido por `REPLACE_WITH_YOUR_VALUE`. Los datos locales, sesiones, certificados privados y perfiles de despliegue se omiten. Configurar servicios y credenciales propios antes de ejecutar. La compilación y el funcionamiento con servicios externos no se han validado.
+Original credentials have been removed or replaced with `REPLACE_WITH_YOUR_VALUE`. Local data, sessions, private certificates, and deployment profiles are omitted. Configure your own services and credentials before running. Building and operation with external services have not been validated.

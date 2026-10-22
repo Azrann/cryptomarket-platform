@@ -1,29 +1,31 @@
+**Languages:** [English](README.md) · [Español](README.es.md)
+
 # cryptomarketanalysis
 
-Suite .NET de recopilación de datos de criptomonedas e ICOs: seguimiento de Twitter, persistencia SQL, extracción de proyectos ICO y lectura periódica de su impacto en redes sociales.
+.NET suite for collecting cryptocurrency and ICO data: Twitter monitoring, SQL persistence, ICO project extraction, and periodic reading of social media impact.
 
-Documentación basada en los archivos locales revisados el 21 de octubre de 2026.
+Documentation based on local files reviewed on 21 October 2026.
 
 <!-- BEGIN project-context -->
 
-## Antigüedad y evidencia
+## Historical dates and evidence
 
-**Año de referencia de esta versión: 2018.** Se toma el archivo de código o configuración más reciente con una fecha histórica recuperable; no se ha podido confirmar la fecha exacta de creación.
+**Reference year for this version: 2018.** This uses the most recent source or configuration file with a recoverable historical date; the exact creation date could not be confirmed.
 
-- Archivo más reciente datable: **2018-06-06**, [`cryptomarketanalysis/src/IcoHolderScrapper/Program.cs`](src/IcoHolderScrapper/Program.cs); fecha de modificación conservada.
-- Primer registro del repositorio Git original que contiene este código: **2018-02-24**. Puede corresponder a una importación; no prueba cuándo se escribió por primera vez.
-- Dependencia fechada más reciente entre las comprobadas: [Newtonsoft.Json 11.0.2](https://www.nuget.org/packages/Newtonsoft.Json/11.0.2), publicada el **2018-03-24** (versión declarada), en [`cryptomarketanalysis/src/CryptoMarketAnalysis.DataAccess/packages.config`](src/CryptoMarketAnalysis.DataAccess/packages.config).
-- Referencia adicional: destino `v4.6.1` en [`cryptomarketanalysis/src/CryptoMarketAnalysis/CryptoMarketAnalysis.csproj`](src/CryptoMarketAnalysis/CryptoMarketAnalysis.csproj); su [versión estable se publicó el 2015-11-30](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-framework). Es una pista de generación tecnológica; pudieron existir versiones preliminares anteriores.
+- Most recent datable file: **2018-06-06**, [`cryptomarketanalysis/src/IcoHolderScrapper/Program.cs`](src/IcoHolderScrapper/Program.cs); preserved modification timestamp.
+- First record in the original Git repository containing this code: **2018-02-24**. This may be an import and does not establish when the code was first written.
+- Most recently published dependency among those checked: [Newtonsoft.Json 11.0.2](https://www.nuget.org/packages/Newtonsoft.Json/11.0.2), published on **2018-03-24** (declared version), in [`cryptomarketanalysis/src/CryptoMarketAnalysis.DataAccess/packages.config`](src/CryptoMarketAnalysis.DataAccess/packages.config).
+- Additional reference: target `v4.6.1` in [`cryptomarketanalysis/src/CryptoMarketAnalysis/CryptoMarketAnalysis.csproj`](src/CryptoMarketAnalysis/CryptoMarketAnalysis.csproj); its [stable release was published on 2015-11-30](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-framework). This indicates the technology generation; earlier preview releases may have existed.
 
-La publicación de una dependencia sitúa la configuración conservada a partir de esa versión, si la referencia es válida. Una actualización de paquetes puede ser mucho más reciente que el inicio del proyecto. No se restauraron paquetes para comprobarlo.
+A dependency's publication places the preserved configuration at or after that version, if the reference is valid. Package updates may be much newer than the project's beginnings. Packages were not restored to verify this.
 
-Se descartaron las marcas de tiempo de la copia de octubre de 2026 y los documentos generados durante esta revisión. Las fechas recuperables no garantizan que no existan cambios posteriores sin datar.
+October 2026 copy timestamps and documents generated during this review were excluded. Recoverable dates do not guarantee that there are no later, undated changes.
 
-## Por qué merece la pena mirarlo
+## Why this is worth exploring
 
-Los lectores de redes y las tareas periódicas convierten información dispersa sobre monedas e ICO en datos persistidos. La parte interesante es el recorrido extracción → normalización → almacenamiento, especialmente la coordinación de lectores mediante CronNET.
+Social media readers and scheduled tasks turn scattered information about currencies and ICOs into persisted data. The interesting flow is extraction → normalization → storage, especially the coordination of readers through CronNET.
 
-Puntos de entrada al código:
+Code entry points:
 
 - [`src/IcoReaderService`](src/IcoReaderService/)
 - [`src/IcoHolderScrapper/Program.cs`](src/IcoHolderScrapper/Program.cs)
@@ -31,41 +33,41 @@ Puntos de entrada al código:
 
 <!-- END project-context -->
 
-## Estructura y responsabilidades
+## Structure and responsibilities
 
-| Ruta | Responsabilidad |
+| Path | Responsibility |
 | --- | --- |
-| `src/CryptoMarketAnalysis/Program.cs` | Alojamiento del proceso como servicio Windows mediante Topshelf. |
-| `src/CryptoMarketAnalysis/TwitterService.cs` | Credenciales de Twitter, términos de búsqueda y eventos de publicaciones recibidas. |
-| `src/Test/TwitterStream/` | Experimentos adicionales con Twitter, Facebook y PubNub. |
-| `src/CryptoMarketAnalysis/DataAccess/` | Repositorios, monedas, tweets y procedimientos para contadores de actividad. |
-| `src/CryptoMarketAnalysis.DataAccess/` | Entidades y contextos de mercado/sociales de ICOs. |
-| `src/IcoHolderScrapper/` | Extracción de fichas ICO a archivos y actualización de la base de datos. |
-| `src/IcoReaderService/` | Lectores de distintas redes y trabajo recurrente con CronNET para guardar impacto social. |
+| `src/CryptoMarketAnalysis/Program.cs` | Hosts the process as a Windows service using Topshelf. |
+| `src/CryptoMarketAnalysis/TwitterService.cs` | Twitter credentials, search terms, and events for received posts. |
+| `src/Test/TwitterStream/` | Additional Twitter, Facebook, and PubNub experiments. |
+| `src/CryptoMarketAnalysis/DataAccess/` | Repositories, currencies, tweets, and activity counter procedures. |
+| `src/CryptoMarketAnalysis.DataAccess/` | ICO market/social entities and contexts. |
+| `src/IcoHolderScrapper/` | Extracts ICO profiles to files and updates the database. |
+| `src/IcoReaderService/` | Readers for different networks and recurring CronNET jobs to store social impact. |
 
-## Tecnologías y requisitos
+## Technologies and requirements
 
-Windows, .NET Framework 4.6.1, Visual Studio/MSBuild, Tweetinvi 2.1 y Topshelf 4. Las integraciones externas necesitan credenciales propias y compatibilidad con sus APIs.
+Windows, .NET Framework 4.6.1, Visual Studio/MSBuild, Tweetinvi 2.1, and Topshelf 4. External integrations require your own credentials and API compatibility.
 
-Destinos leídos de los proyectos: `v4.6.1`.
+Targets read from project files: `v4.6.1`.
 
-## Preparación y arranque
+## Setup and startup
 
-Abrir src/CryptoMarketAnalysis.sln, restaurar NuGet y compilar. Revisar TwitterService antes de ejecutar el binario como consola o instalarlo mediante Topshelf.
+Open src/CryptoMarketAnalysis.sln, restore NuGet packages, and build. Review TwitterService before running the executable as a console application or installing it with Topshelf.
 
-Soluciones presentes: `src/CryptoMarketAnalysis.sln`, `src/Test/TwitterStream.sln`.
+Solutions present: `src/CryptoMarketAnalysis.sln`, `src/Test/TwitterStream.sln`.
 
-## Configuración e integraciones
+## Configuration and integrations
 
-Hay credenciales literales en TwitterService.cs y en el programa de prueba, además de claves PubNub. Externalizarlas antes de conectar el servicio. IcoHolderScrapper/App.config e IcoReaderService/App.config contienen conexiones SQL adicionales.
+TwitterService.cs and the test program contain literal credentials, as well as PubNub keys. Externalize them before connecting the service. IcoHolderScrapper/App.config and IcoReaderService/App.config contain additional SQL connections.
 
-## Estado de esta copia
+## Status of this copy
 
-La copia completa incluye ingesta y persistencia además del primer servicio de tweets. Los modelos y servicios guardan relación con el portal cryptomarketweb. Los ejecutables de scraping inicializan o actualizan datos y no se ejecutaron. El proyecto referencia CronNET; revisar la disponibilidad de esa biblioteca y los paquetes originales.
+The complete copy includes ingestion and persistence in addition to the initial tweet service. Models and services are related to the cryptomarketweb portal. Scraping executables initialize or update data and were not run. The project references CronNET; check the availability of that library and the original packages.
 
-La revisión fue estática: no se restauraron dependencias, no se compiló ni se ejecutaron aplicaciones o pruebas. Los comandos anteriores son instrucciones de preparación, no resultados de validación. Las versiones indicadas son las del código conservado.
+The review was static: dependencies were not restored, and applications and tests were neither built nor run. The commands above are setup instructions, not validation results. Listed versions describe the preserved code.
 
 
-## Copia pública
+## Public copy
 
-Las credenciales originales se han retirado o sustituido por `REPLACE_WITH_YOUR_VALUE`. Los datos locales, sesiones, certificados privados y perfiles de despliegue se omiten. Configurar servicios y credenciales propios antes de ejecutar. La compilación y el funcionamiento con servicios externos no se han validado.
+Original credentials have been removed or replaced with `REPLACE_WITH_YOUR_VALUE`. Local data, sessions, private certificates, and deployment profiles are omitted. Configure your own services and credentials before running. Building and operation with external services have not been validated.
